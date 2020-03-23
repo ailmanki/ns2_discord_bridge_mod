@@ -173,9 +173,11 @@ end
 function Plugin:ClientDisconnect(client)
 	if self.Config.SendPlayerLeave then
 		local player = client:GetControllingPlayer()
-		local numPlayers = math.max(Server.GetNumPlayersTotal() -1, 0)
-		local maxPlayers = Server.GetMaxPlayers()
-		self:SendToDiscord("player", "leave", player:GetName(), player:GetSteamId(), numPlayers .. "/" .. maxPlayers)
+		if player ~= nil then
+			local numPlayers = math.max(Server.GetNumPlayersTotal() -1, 0)
+			local maxPlayers = Server.GetMaxPlayers()
+			self:SendToDiscord("player", "leave", player:GetName(), player:GetSteamId(), numPlayers .. "/" .. maxPlayers)
+		end
 	end
 end
 
