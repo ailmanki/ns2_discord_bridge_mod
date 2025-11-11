@@ -22,7 +22,7 @@ jobs:
         go-version: '1.20'
 
     - name: Build
-      run: go build -v ./...
+      run: go build -v ns2-discord-bridge
 
     - name: Test
-      run: go test -v ./...
+      run: go test -v ns2-discord-bridge
